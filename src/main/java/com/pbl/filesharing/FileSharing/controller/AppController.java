@@ -137,6 +137,9 @@ public class AppController {
         String login = request.getUserPrincipal().getName();
         List<Document> listDocs = repository.findbyLogin(login);
         model.addAttribute("listDocs", listDocs);
+
+        List<Document> listDocsShared = repository.findbyReciever(login);
+        model.addAttribute("listDocsShared", listDocsShared);
         return "home";
     }
 }

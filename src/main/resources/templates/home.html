@@ -61,8 +61,23 @@
                     <form th:action="@{/share}" method="post">
                         <input type="text" placeholder="Email to share with" name="shareWith">
                         <input type="hidden" th:value="${doc.id}" name="docID">
-                        <button type="submit"></button>
+                        <button type="submit">Share</button>
                     </form>
+                </div>
+            </th:block>
+        </div>
+        <div class="row border rounded m-3 p-3" style="background:yellow;">
+            <th:block th:each="doc : ${listDocsShared}">
+                <div class="col">
+                    <div>
+                        <img th:src="@{/images/file.png}" width="50"/>
+                    </div>
+                    <div>
+                        <a th:href="@{'/download?id='+${doc.id}}">[[${doc.name}]]</a>
+                    </div>
+                    <div>
+                        ([[${#numbers.formatInteger(doc.size, 4, 'COMMA')}]] bytes)
+                    </div>
                 </div>
             </th:block>
         </div>
